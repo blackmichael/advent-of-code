@@ -80,39 +80,30 @@ Once the program has halted, its output is available at address 0, also just lik
 
 Find the input noun and verb that cause the program to produce the output 19690720. What is 100 * noun + verb? (For example, if noun=12 and verb=2, the answer would be 1202.)
 */
-fun main(args: Array<String>) {
-  if (args.isEmpty()) {
-    println("must provide input filename")
-    return
-  }
-
-  val input = File(args[0])
-  val opcodes = input.readLines()
+object ProgramAlarm {
+  fun readFileInput(file: File) = file.readLines()
     .map { it.split(",") }
     .flatten()
     .map { it.toInt() }
     .toMutableList()
 
-  println("input: $opcodes")
-  val computer = Computer(opcodes.toMutableList())
-  val output = computer.process()
-  println("output: $output")
+  fun part1(opcodes: MutableList<Int>): Int = Computer(opcodes).process()[0]
 
-  // part 2
-  checker@ for (noun in 0..99) {
-    for (verb in 0..99) {
-      val memory = opcodes.toMutableList()
-      memory[1] = noun
-      memory[2] = verb
+  fun part2(opcodes: MutableList<Int>): Int {
+    for (noun in 0..99) {
+      for (verb in 0..99) {
+        val memory = opcodes.toMutableList()
+        memory[1] = noun
+        memory[2] = verb
 
-      val result = Computer(memory).process()
-      if (result[0] == 19690720) {
-        println("noun: $noun")
-        println("verb: $verb")
-        println("result: ${result[0]}")
-        break@checker
+        val result = Computer(memory).process()
+        if (result[0] == 19690720) {
+          return result[0]
+        }
       }
     }
+
+    throw RuntimeException("oops")
   }
 }
 

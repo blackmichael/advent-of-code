@@ -37,29 +37,23 @@ So, for each module mass, calculate its fuel and add it to the total. Then, trea
 
 What is the sum of the fuel requirements for all of the modules on your spacecraft when also taking into account the mass of the added fuel? (Calculate the fuel requirements for each module separately, then add them all up at the end.)
 */
+object FuelCalculator {
+  fun readFileInput(file: File): List<Int> = file.readLines().map { it.toInt() }
 
-fun main(args: Array<String>) {
-  if (args.isEmpty()) {
-    println("provide an input file")
-    return
+  fun calculate(masses: List<Int>): Int = masses.fold(0) { acc, mass -> acc + calculateTotalFuel(mass) }
+
+  private fun calculateTotalFuel(moduleMass: Int) = calculateFuel(moduleMass).let { it + calculateRecursiveFuel(it) }
+
+  private fun calculateFuel(mass: Int): Int = (floor(mass / 3.0) - 2).toInt()
+
+  private fun calculateRecursiveFuel(mass: Int): Int {
+    val fuel = calculateFuel(mass)
+    if (fuel <= 0) {
+      return 0
+    }
+
+    return fuel + calculateRecursiveFuel(fuel)
   }
-
-  val input = File(args[0])
-  val masses = input.readLines().map { it.toInt() }
-  val total = masses.fold(0) { acc, mass -> acc + calculateTotalFuel(mass) }
-
-  println("total: $total")
 }
 
-fun calculateTotalFuel(moduleMass: Int) = calculateFuel(moduleMass).let { it + calculateRecursiveFuel(it) }
 
-fun calculateFuel(mass: Int): Int = (floor(mass / 3.0) - 2).toInt()
-
-fun calculateRecursiveFuel(mass: Int): Int {
-  val fuel = calculateFuel(mass)
-  if (fuel <= 0) {
-    return 0
-  }
-
-  return fuel + calculateRecursiveFuel(fuel)
-}
