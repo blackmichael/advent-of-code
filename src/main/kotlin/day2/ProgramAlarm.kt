@@ -2,12 +2,7 @@ package day2
 
 import java.io.File
 
-/*
-Usage:
-kotlinc ProgramAlarm.kt -include-runtime -d ProgramAlarm.jar && java -jar ProgramAlarm.jar input.txt
-
----
-
+/**
 Part 1:
 On the way to your gravity assist around the Moon, your ship computer beeps angrily about a "1202 program alarm". On the radio, an Elf is already explaining how to handle the situation: "Don't worry, that's perfectly norma--" The ship computer bursts into flames.
 

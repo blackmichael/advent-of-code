@@ -3,7 +3,7 @@ package day1
 import java.io.File
 import kotlin.math.floor
 
-/*
+/**
 Part 1:
 The Elves quickly load you into a spacecraft and prepare to launch.
 
