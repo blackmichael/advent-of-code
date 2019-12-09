@@ -2,6 +2,7 @@ package main
 
 import day1.FuelCalculator
 import day2.ProgramAlarm
+import main.day3.CrossedWires
 import java.io.File
 
 fun main() {
@@ -14,5 +15,16 @@ fun main() {
     ProgramAlarm.readFileInput(File("src/main/resources/day2/restored_input.txt")).let {
         println("part 1 result: ${ProgramAlarm.part1(it.toMutableList())}")
         println("part 2 result: ${ProgramAlarm.part2(it.toMutableList())}")
+    }
+
+    println("day 3")
+    CrossedWires.readFileInput(File("src/main/resources/day3/input.txt")).let {
+        // simple_test.txt = 1, 1, 12, 12
+        // test1.txt = 50, 50, 350, 200
+        // test2.txt = 50, 50, 350, 200
+        // input.txt = 8000, 15000, 15000, 25000
+
+        println("part 1 result: ${CrossedWires.part1(it, 8000, 15000, 15000, 25000)}")
+        println("part 2 result: ${CrossedWires.part2(it, 8000, 15000, 15000, 25000)}")
     }
 }
