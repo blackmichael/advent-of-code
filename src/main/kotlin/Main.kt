@@ -3,6 +3,7 @@ package main
 import day1.FuelCalculator
 import day2.ProgramAlarm
 import main.day3.CrossedWires
+import main.day4.SecureContainer
 import java.io.File
 
 fun main() {
@@ -24,7 +25,11 @@ fun main() {
         // test2.txt = 50, 50, 350, 200
         // input.txt = 8000, 15000, 15000, 25000
 
-        println("part 1 result: ${CrossedWires.part1(it, 8000, 15000, 15000, 25000)}")
-        println("part 2 result: ${CrossedWires.part2(it, 8000, 15000, 15000, 25000)}")
+        // println("part 1 result: ${CrossedWires.part1(it, 8000, 15000, 15000, 25000)}")
+        // println("part 2 result: ${CrossedWires.part2(it, 8000, 15000, 15000, 25000)}")
     }
+
+    println("day 4")
+    println("part 1 result: ${SecureContainer.countPart1Passwords(153517, 630395)}")
+    println("part 2 result: ${SecureContainer.countPart2Passwords(153517, 630395)}")
 }
