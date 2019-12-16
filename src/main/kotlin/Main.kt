@@ -5,6 +5,7 @@ import day2.ProgramAlarm
 import main.day3.CrossedWires
 import main.day4.SecureContainer
 import main.day5.SunnyWithAChanceOfAstroids
+import main.day6.UniversalOrbitMap
 import java.io.File
 
 fun main() {
@@ -38,5 +39,11 @@ fun main() {
     SunnyWithAChanceOfAstroids.readFileInput(File("src/main/resources/day5/input.txt")).let {
         println("part 1 result: ${SunnyWithAChanceOfAstroids.part1(it)}")
         println("part 2 result: ${SunnyWithAChanceOfAstroids.part2(it)}")
+    }
+
+    println("day 6")
+    UniversalOrbitMap.readFileInput(File("src/main/resources/day6/input.txt")).let {
+        println("part 1 result: ${UniversalOrbitMap.part1(it)}")
+        println("part 2 result: ${UniversalOrbitMap.part2(it)}")
     }
 }
